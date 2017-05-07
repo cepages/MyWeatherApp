@@ -71,13 +71,11 @@ Some classes and functions have comment created with `Header Doc`. So as improve
 #### Suggestions / Points ####
 
 **Consider the best way to store the information to disk for offline viewing,
-
 choose an appropriate method for the given task.**
 
 I used Core Data because it's easy to use and to extend.'
 
 **Think about the latitude / longitude you are passing up to the API. How do
-
 you decide what this location is? What would the user want to do?**
 
 The app currently is using the location of the phone. As improvement the user could select in a map the location where he wants to know the weather and for the cities around to that location.
