@@ -28,7 +28,7 @@ class ListCitiesViewController: UIViewController {
         }
     
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         tableView.dataSource = self.dataProvider
