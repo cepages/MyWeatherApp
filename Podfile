@@ -4,9 +4,9 @@
 target 'WeatherApp' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-  pod 'ObjectMapper', '~> 2.2'
-  pod 'Alamofire', '~> 4.4'
-  pod 'AlamofireObjectMapper', '~> 4.0'
+  pod 'ObjectMapper', '~> 3.1.0'
+  pod 'Alamofire', '~> 4.7.1'
+  pod 'AlamofireObjectMapper', '~> 5.0'
   # Pods for WeatherApp
 
   target 'WeatherAppTests' do
