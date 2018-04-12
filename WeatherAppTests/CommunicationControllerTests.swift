@@ -53,14 +53,14 @@ class CommunicationControllerTests: XCTestCase {
         
         self.communicationController.citiesInCycle(latitude: 0.0, longitude: 0.0, quantity: 10) { [weak self] (listOfcities:Array<CityMappable>?, success:Bool, errorMessage:Error?) in
             
-            guard let `self` = self else { return }
+            guard let strongSelf = self else { return }
             
             guard success, let firstCity = listOfcities?.first else{
                 XCTFail("The list of cities doesn't match with the expectation")
                 return
             }
             
-            self.cityTest(city: firstCity)
+            strongSelf.cityTest(city: firstCity)
             
             asyncExpectation.fulfill()
         }

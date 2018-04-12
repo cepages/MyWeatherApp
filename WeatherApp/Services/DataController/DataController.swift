@@ -48,7 +48,7 @@ class DataController: NSObject {
         //We call to the communications to get the cities
         self.communicationsController.citiesInCycle(latitude: latitude, longitude: longitude, quantity: quantity) { [weak self] (listOfCitiesMappables:Array<CityMappable>?, success:Bool, error:Error?) in
             
-            guard let `self` = self else {
+            guard let strongSelf = self else {
                 handler(nil,false,false,"Error managing memory")
                 return
             }
@@ -59,11 +59,11 @@ class DataController: NSObject {
                 
                 do {
                     //We delete other cities in the db
-                    try self.dataBaseController.removeAllCities()
+                    try strongSelf.dataBaseController.removeAllCities()
                     
                     for cityMappable in listOfCitiesMappablesUW {
                         //We insert our cities in db
-                        let city = try self.dataBaseController.persistCity(cityName: cityMappable.cityName, cityID: Int64(cityMappable.cityID ?? -1), temperatureMax: cityMappable.maxTemperature, temperatureMin: cityMappable.minTemperature, weatherDescription: cityMappable.weatherDescription)
+                        let city = try strongSelf.dataBaseController.persistCity(cityName: cityMappable.cityName, cityID: Int64(cityMappable.cityID ?? -1), temperatureMax: cityMappable.maxTemperature, temperatureMin: cityMappable.minTemperature, weatherDescription: cityMappable.weatherDescription)
                         
                         listOfCities.append(city)
                     }

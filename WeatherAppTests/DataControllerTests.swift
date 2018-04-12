@@ -81,7 +81,7 @@ class DataControllerTests: XCTestCase {
         let asyncExpectation = expectation(description: "longRunningFunction")
 
         self.dataController.listOfCities(latitude: 1, longitude: 1, quantity: 2) { [weak self] (listOfCities:Array<City>?, sucess:Bool, offline:Bool, error:Error?) in
-            guard let `self` = self else { XCTFail(); return}
+            guard let strongSelf = self else { XCTFail(); return}
             
             XCTAssert(sucess, "The request was not successful")
             XCTAssert(!offline, "The request should not be offline")
@@ -90,8 +90,8 @@ class DataControllerTests: XCTestCase {
             let city1 = listOfCities?.first
             let city2 = listOfCities?[1]
             
-            XCTAssert(self._compareMappableCityWithCity(mappableCity: mockCommunicationsController.city1!, city: city1!),"Cities don't match")
-            XCTAssert(self._compareMappableCityWithCity(mappableCity: mockCommunicationsController.city2!, city: city2!),"Cities don't match")
+            XCTAssert(strongSelf._compareMappableCityWithCity(mappableCity: mockCommunicationsController.city1!, city: city1!),"Cities don't match")
+            XCTAssert(strongSelf._compareMappableCityWithCity(mappableCity: mockCommunicationsController.city2!, city: city2!),"Cities don't match")
             
             asyncExpectation.fulfill()
         }
