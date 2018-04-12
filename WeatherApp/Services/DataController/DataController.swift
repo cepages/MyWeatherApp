@@ -63,7 +63,11 @@ class DataController: NSObject {
                     
                     for cityMappable in listOfCitiesMappablesUW {
                         //We insert our cities in db
-                        let city = try strongSelf.dataBaseController.persistCity(cityName: cityMappable.cityName, cityID: Int64(cityMappable.cityID ?? -1), temperatureMax: cityMappable.maxTemperature, temperatureMin: cityMappable.minTemperature, weatherDescription: cityMappable.weatherDescription)
+                        guard let cityId = cityMappable.cityID else {
+                            continue
+                        }
+                        
+                        let city = try strongSelf.dataBaseController.persistCity(cityName: cityMappable.cityName, cityID: Int64(cityId), temperatureMax: cityMappable.maxTemperature, temperatureMin: cityMappable.minTemperature, weatherDescription: cityMappable.weatherDescription)
                         
                         listOfCities.append(city)
                     }
