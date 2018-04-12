@@ -66,16 +66,16 @@ extension ListCitiesViewController {
         }
         
         self.dataController.listOfCities(latitude: userLocation.latitude, longitude: userLocation.longitude, quantity: NUMBER_OF_LOCATIONS_TO_REQUEST) { [weak self] (listOfCities:Array<City>?, success:Bool, offline:Bool, error:Error?) in
-            guard let `self` = self else { return }
+            guard let strongSelf = self else { return }
             
             guard let listOfCitiesUW = listOfCities, success else {
                 let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Error title in alert controller"), message: NSLocalizedString("There was an error getting the list of cities", comment: "Error message getting the list of cities"), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "OK button in alertController"), style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                strongSelf.present(alert, animated: true, completion: nil)
                 
                 return
             }
-            self.dataProvider.setCities(cities: listOfCitiesUW)
+            strongSelf.dataProvider.setCities(cities: listOfCitiesUW)
         }
     }
     
