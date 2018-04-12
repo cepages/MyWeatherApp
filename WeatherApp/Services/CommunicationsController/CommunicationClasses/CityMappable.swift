@@ -13,18 +13,18 @@ import ObjectMapper
  
  @discussion This class represents a JSON City with weather
  */
-class CityMappable: Mappable {
+struct CityMappable: Mappable {
     var cityName: String?
     var cityID: Int?
     var maxTemperature: Float?
     var minTemperature: Float?
     var weatherDescription: String?
     
-    required convenience init?(map: Map) {
-        self.init()
+    init?(map: Map) {
+    
     }
     
-    func mapping(map: Map) {
+    mutating func mapping(map: Map) {
         cityName                <- map["name"]
         cityID                  <- map["id"]
         maxTemperature          <- map["main.temp_max"]
