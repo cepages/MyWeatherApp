@@ -24,6 +24,15 @@ struct CityMappable: Mappable {
     
     }
     
+    init(cityName:String?, cityID:Int?, maxTemperature:Float?, minTemperature:Float?, weatherDescription:String?) {
+        
+        self.cityName = cityName
+        self.cityID = cityID
+        self.maxTemperature = maxTemperature
+        self.minTemperature = minTemperature
+        self.weatherDescription = weatherDescription
+    }
+    
     mutating func mapping(map: Map) {
         cityName                <- map["name"]
         cityID                  <- map["id"]

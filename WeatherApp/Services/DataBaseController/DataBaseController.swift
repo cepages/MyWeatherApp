@@ -50,7 +50,7 @@ class DataBaseController: NSObject {
             city.temperatureMax = temperatureMaxUnwrapped
         }
         if let temperatureMinUnwrapped = temperatureMin {
-            city.temperatureMax = temperatureMinUnwrapped
+            city.temperatureMin = temperatureMinUnwrapped
         }
         city.weatherDescription = weatherDescription
         
