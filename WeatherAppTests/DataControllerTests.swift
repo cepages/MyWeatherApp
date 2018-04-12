@@ -53,20 +53,18 @@ class DataControllerTests: XCTestCase {
             
             override func citiesInCycle(latitude:Double, longitude:Double, quantity:Int,handler:@escaping (_ cities:Array<CityMappable>?, _ success:Bool, _ errorMessage:Error?)->Void) -> (){
                 
-                let city1 = CityMappable()
-                city1.cityName = DataControllerTests.CITY_NAME_1
-                city1.cityID = DataControllerTests.CITY_ID_1
-                city1.maxTemperature = DataControllerTests.MAX_TEMPERATURE_1
-                city1.minTemperature = DataControllerTests.MIN_TEMPERTURE_1
-                city1.weatherDescription = DataControllerTests.WEATHER_DESCRIPTION_1
+                let city1 = CityMappable(cityName: DataControllerTests.CITY_NAME_1,
+                                         cityID: DataControllerTests.CITY_ID_1,
+                                         maxTemperature: DataControllerTests.MAX_TEMPERATURE_1,
+                                         minTemperature: DataControllerTests.MIN_TEMPERTURE_1,
+                                         weatherDescription: DataControllerTests.WEATHER_DESCRIPTION_1)
                 self.city1 = city1
                 
-                let city2 = CityMappable()
-                city2.cityName = DataControllerTests.CITY_NAME_2
-                city2.cityID = DataControllerTests.CITY_ID_2
-                city2.maxTemperature = DataControllerTests.MAX_TEMPERATURE_2
-                city2.minTemperature = DataControllerTests.MIN_TEMPERTURE_2
-                city2.weatherDescription = DataControllerTests.WEATHER_DESCRIPTION_2
+                let city2 = CityMappable(cityName: DataControllerTests.CITY_NAME_2,
+                                         cityID: DataControllerTests.CITY_ID_2,
+                                         maxTemperature: DataControllerTests.MAX_TEMPERATURE_2,
+                                         minTemperature: DataControllerTests.MIN_TEMPERTURE_2,
+                                         weatherDescription: DataControllerTests.WEATHER_DESCRIPTION_2)
                 self.city2 = city2
                 
                 handler([city1,city2],true,nil)
