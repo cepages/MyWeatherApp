@@ -41,13 +41,17 @@ class DataBaseController: NSObject {
      * This method persist in the db a city.
      * \param city we are gonna persist
      */
-     func persistCity(cityName:String?,cityID:Int64?,temperatureMax:Float?,temperatureMin:Float?,weatherDescription:String?) throws -> (City) {
+     func persistCity(cityName:String?,cityID:Int64,temperatureMax:Float?,temperatureMin:Float?,weatherDescription:String?) throws -> (City) {
         
         let city:City = NSEntityDescription.insertNewObject(forEntityName: "City", into: self.managedObjectContext) as! City
-        city.id = cityID ?? -1
+        city.id = cityID
         city.name = cityName
-        city.temperatureMax = temperatureMax ?? 0
-        city.temperatureMin = temperatureMin ?? 0
+        if let temperatureMaxUnwrapped = temperatureMax {
+            city.temperatureMax = temperatureMaxUnwrapped
+        }
+        if let temperatureMinUnwrapped = temperatureMin {
+            city.temperatureMax = temperatureMinUnwrapped
+        }
         city.weatherDescription = weatherDescription
         
         try self.managedObjectContext.save()
